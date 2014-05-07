@@ -1,0 +1,104 @@
+<!DOCTYPE html><html><head>
+<meta charset="utf-8" />
+<title>Replacerator</title>
+<style>
+
+html {
+	color: #444;
+	background: #eee;
+	font-family: sans-serif;
+	font-size: 1em;
+}
+#wrap {
+	max-width: 960px;
+	background: #f7f7f7;
+	border: 2px solid #ccc;
+	border-radius: 16px;
+	margin: 2em auto;
+	padding: 1em 2%;
+	position: relative;
+}
+#input {
+	width: 73%;
+	height: 14em;
+}
+#params {
+	width: 24%;
+	height: 14em;
+	float: right;
+}
+#output {
+	color: #000;
+	background: #fff;
+	border: 1px solid #ddd;
+	border-width: 1px 0;
+	margin: 1.5em 0 .5em 0;
+	padding: 1% 2%;
+}
+#foot {
+	color: #777;
+	bottom: .5em;
+	font-size: .8em;
+	text-align: right;
+}
+a {
+	text-decoration: none;
+	color: #479;
+}
+</style></head><body><div id="wrap">
+
+<textarea id="params">
+anna
+planker
+eik
+50
+2
+</textarea>
+
+<textarea id="input">
+Per gikk til {1} for å kjøpe {2} av {3}.
+Han hadde {4} kroner og kjøpte {5} {2}.
+
+{5}{2}1{1}.mpg
+</textarea>
+
+<div id="output">please enable javascript</div>
+<div id="foot">Replacerator by <a href="http://freak.no/forum/member.php?u=46976">tripflag</a></div>
+
+</div><script>
+var sprintf = function(text, args) {
+	return text.replace(/{(\d+)}/g, function(match, number) { 
+		return typeof args[number] != 'undefined'
+			? args[number]
+			: match
+		;
+	});
+};
+var upd = function() {
+	var pv = '\n' + p.value;
+	var iv = i.value;
+	o.innerHTML =
+		sprintf(iv, pv.split('\n'))
+			.replace(/&/g, '&amp;')
+			.replace(/>/g, '&gt;')
+			.replace(/</g, '&lt;')
+			.replace(/ /g, '&nbsp;')
+			.replace(/'/g, '&#39;')
+			.replace(/"/g, '&quot;')
+			.replace(/\n/g, '<br />\n');
+};
+var i = document.getElementById('input');
+var p = document.getElementById('params');
+var o = document.getElementById('output');
+if (i.addEventListener)
+{
+	i.addEventListener('input', upd);
+	p.addEventListener('input', upd);
+}
+else if (i.attachEvent)
+{
+	i.attachEvent('onpropertychange', upd);
+	p.attachEvent('onpropertychange', upd);
+}
+upd();
+</script></body></html>
