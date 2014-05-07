@@ -1,0 +1,141 @@
+<!DOCTYPE html><html><head>
+	<meta charset="utf-8" />
+	<title>Cannot find page</title>
+	<style>
+html {
+	background: #fff url('404.png') bottom right no-repeat;
+	font-family: 'verdana', sans-serif;
+	font-size: .8em;
+}
+body {
+	margin: 0 2em;
+}
+html, body {
+	min-height: 100%;
+	width: 90;
+}
+#wrap {
+	max-width: 34em;
+}
+h1,h2,h3,p {
+	margin: 0;
+	padding: 0;
+	font-size: 1em;
+	font-weight: normal;
+}
+h1 {
+	font-size: 1.5em;
+	margin: 1.33em 0;
+}
+h1 img {
+	margin: 0 .5em -.75em 0;
+}
+p {
+	padding: 0;
+	margin: 2em 0;
+	line-height: 1.33em;
+}
+hr {
+	margin: 1.9em 0;
+	background: #bbb;
+	border: none;
+}
+ul {
+	padding: .75em 0 0 0;
+}
+li {
+	margin: 0 0 .8em 3.46em;
+	line-height: 1.32em;
+}
+a {
+	color: red;
+}
+img+a:before {
+	content: ' ';
+}
+h3 {
+	margin: 2.5em 0;
+}
+li:nth-child(3) img { margin: -.2em 0 }
+li:nth-child(4) img { margin: -.5em 0 }
+table {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	opacity: 0;
+	display: none;
+}
+table,tr,td {
+	background: rgba(0,0,0,0.2);
+	height: 100%;
+	width: 100%;
+	text-align: center;
+}
+table img {
+	border-radius: 32px;
+	box-shadow: 0 4px 32px #888;
+}
+</style></head><body><div id="wrap">
+	<h1>
+		<a href="#" onclick="bw();"><img src="404-1.gif" /></a>
+		The page cannot be found
+	</h1>
+	<p>
+		The page you are looking for might have been removed, had its
+		name changed, or is temporarily unavailable.
+	</p>
+	<hr />
+	<h2>
+		Please try the following:
+	</h2>
+	<ul>
+		<li>
+			If you typed the page address in the Address bar, make
+			sure that it is spelled correctly.
+		</li>
+		<li>
+			Open the <a href="/">9001.github.io</a>
+			home page, and then look for links to the information you want.
+		</li>
+		<li>
+			Click the <img src="404-2.gif" /><a href="#">Back</a>
+			button to try another link.
+		</li>
+		<li>
+			Click <img src="404-3.gif" /><a href="#">Search</a>
+			to look for information on the Internet.
+		</li>
+	</ul>
+	<h3>
+		HTTP 404 - File not found
+		<br />
+		Internet Explorer
+	</h3>
+	<table><tr><td>
+		<img src="hello.png" />
+	</td></tr></table>
+</div>
+<script>
+var opac = 0;
+var td = document.getElementsByTagName('table')[0];
+function bw()
+{
+	td.style.display = 'table';
+	fader();
+}
+function fader()
+{
+	opac += opac < 0.5 ?
+		0.01 + (opac / 10.0) :
+		(1 - opac) / 10.0;
+	td.style.opacity = opac;
+	if (opac >= 0.99)
+	{
+		td.style.opacity = "1";
+		return;
+	}
+	setTimeout('fader();',10);
+}
+</script></body></html>
